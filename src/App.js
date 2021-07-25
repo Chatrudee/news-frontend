@@ -8,27 +8,35 @@ import {
 import "./App.css";
 import Navbar from "./components/Navbar/Index";
 import Home from "./pages/Home";
-import Article from './pages/Article'
-import AllbookMark from "./pages/Allbookmark";
+import Article from "./pages/Article";
+import Allbookmark from "./pages/Allbookmark";
+import SearchPage from "./pages/SearchPage";
 
 export default function App() {
   return (
     <Router>
       <Navbar />
-
       <Switch>
         <Route path="/" exact>
-          <div className="container">
+          <div className="box">
             <Home />
           </div>
         </Route>
-        <Route path="/article" exact>
-          <Article />
+        <Route path="/article/:id" component={Article} exact>
+          <div className="box">
+            <Article />
+          </div>
         </Route>
         <Route path="/allbookmark" exact>
-          <AllbookMark />
+          <div className="box">
+            <Allbookmark />
+          </div>
         </Route>
-        
+        <Route path="/searchpage" exact>
+          <div className="box">
+            <SearchPage />
+          </div>
+        </Route>
         <Redirect to="/" />
       </Switch>
 

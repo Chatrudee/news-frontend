@@ -1,31 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
+import NewsCard from "../components/NewCard/NewsCard";
 import "../App.css";
-import { news } from "../data/testData";
-import { fruits } from "../data/testData";
+import {
+  useHistory,
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  BrowserRouter,
+} from "react-router-dom";
+import Select from "../components/Button/Select";
 
-export default function AllBookmark() {
-  const [searchTerm, setSearchTerm] = useState("")
-
+export default function Home(props ) {
   return (
-    <div>
-            <input type="text" onChange={ (event) => {setSearchTerm(event.target.value)}}/>
-            {news.filter((val) => {
-                if (searchTerm == ""){
-                    return val
-                } else if (val.title.toLowerCase().includes(searchTerm.toLocaleLowerCase())){
-                    return val
-                }
-            }).map((val, key) => {
-                return(
-                    <div className='user' key={key}>
-                        <p>{val.title}</p>
-                    </div>
-                )
-            })
-            }
-        </div>
+    <BrowserRouter>
+      <div>
+        <div className="header">
+          <div className="name-header">All Bookmark</div>
+          <Select/>
+          </div>
+          <NewsCard/>
+        
+      </div>
+    </BrowserRouter>
   );
 }
-
-
-   
